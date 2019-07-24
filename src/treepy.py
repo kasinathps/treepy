@@ -7,15 +7,15 @@ curdir = 0
 
 #function to print all subdirectories and files in the given directory
 def printdir(dir):
-    for (dirname, subdirs, fnames) in walk(dir):
-        print(dirname)
-        print("\n".join(subdirs))
-        print("\n".join(fnames))
-        subdirs[:] = []
+    dirname, subdirs, fnames = walk(dir).__next__()
+    print(dirname)
+    print("\n".join(subdirs))
+    print("\n".join(fnames))
 
 
 def Windows(arg):
     printdir(arg)
+    curdir = 0
 
 def Linux():
     pass
