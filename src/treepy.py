@@ -8,9 +8,15 @@ curdir = 0
 #function to print all subdirectories and files in the given directory
 def printdir(dir):
     dirname, subdirs, fnames = walk(dir).__next__()
-    print(dirname)
-    print("\n".join(subdirs))
+    print(f"\n{str(dirname)}\tSubdirs : {str(len(subdirs))}\tFiles : {str(len(fnames))}\n")
+    printsubdirs(subdirs,dirname)
     print("\n".join(fnames))
+
+def printsubdirs(subdirs,dirname):
+    for i in subdirs:
+        a,b,c = walk(f"{dirname}\\{str(i)}").__next__()
+        print("{: <20}Subdirs : {: <20}Files : {: <20}".format(str(i),len(b),len(c)))
+
 
 
 def Windows(arg):
