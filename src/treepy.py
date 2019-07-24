@@ -3,9 +3,19 @@ import sys
 from os import listdir,getcwd,walk
 import re
 OS = platform.system()
+curdir = 0
+
+#function to print all subdirectories and files in the given directory
+def printdir(dir):
+    for (dirname, subdirs, fnames) in walk(dir):
+        print(dirname)
+        print("\n".join(subdirs))
+        print("\n".join(fnames))
+        subdirs[:] = []
+
+
 def Windows(arg):
-    print(f"{arg}\n|-->", end = "")
-    print("\n|-->".join(listdir(str(arg))))
+    printdir(arg)
 
 def Linux():
     pass
@@ -28,6 +38,3 @@ def main(arg = sys.argv):
 if __name__ == "__main__":
     main()
 
-def printdir(dir):
-    for dirname, subdirs, fnames in os.walk(dir):
-        
